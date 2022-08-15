@@ -1,18 +1,19 @@
-
-// components
-import Profile from './components/Profile';
-import UserList from './components/UserList';
-
-//CONTEXT
-import UserState from './context-user/User/UserState';
-
-import 'bootstrap/dist/css/bootstrap.min.css'; 
+import {Routes, Route, BrowserRouter} from 'react-router-dom'
+import Index from './pages';
+import Create from './pages/create';
+import View from './pages/view';
 
 function App() {
   return (
     
-        <div className='container p-4'>
-          <h1>Hola Mundo<h/>
+        <div>
+          <BrowserRouter>
+            <Routes>
+              <Route path='/' element={<Index/>} /> 
+              <Route path='create' element={<Create/>} /> 
+              <Route path='view/:bookId' element={<View/>} /> 
+            </Routes>  
+          </BrowserRouter>
         </div>
     
   );
