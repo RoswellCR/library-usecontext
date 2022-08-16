@@ -1,4 +1,6 @@
 import { useState } from "react"
+import { useAppContext } from "../store/Store"
+import { Link } from "react-router-dom"
 
 export default function Create(){
     const [title, setTitle] = useState('')
@@ -7,6 +9,8 @@ export default function Create(){
     const [intro, setIntro] = useState('')
     const [completed, setCompleted] = useState('')
     const [review, setReview] = useState('')
+
+    const store = useAppContext();
 
     const handleChange=(e)=>{
         const name = e.target.name;
@@ -25,9 +29,12 @@ export default function Create(){
           case "review":
             setReview(value);
             break;
+          case "completed":
+            setCompleted(e.target.checked);
+            break;    
 
           default:
-            break;
+            
         }
     }
 
@@ -55,12 +62,15 @@ export default function Create(){
             completed,
             review
         }
-
+        //TODO: send to create a new book
+        store.createItem(newBook);
+        
     }
 
 
     return(
         <div>
+            <Link to='/'> Home </Link>
             <form onSubmit={handleSubmit}>
                 <div>
                     <div>Title</div>
@@ -73,7 +83,7 @@ export default function Create(){
                 <div>
                     <div>Cover</div>
                     <input type="file" name="cover" onChange={handleChangeFile} />
-                    <div>{!!cover ? <img src={cover} width='200'alt='cover'/>:'no image selected'}</div>
+                    <div>{!!cover ? <img src={cover} width='200'alt='cover'/>:''}</div>
                 </div>
                 <div>
                     <div>Introduction</div>

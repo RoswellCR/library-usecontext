@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 const AppContext = createContext({
     items:[],
@@ -11,13 +11,14 @@ export default function Store({children}){
     const [items, setItems] = useState([])
     
     const createItem=(item)=>{  
-        const temp  = [...item]
-        temp.push(item)
-        setItems(temp)
+        console.log(item)
+        const temp  = [...items];
+        temp.push(item);
+        setItems(temp);
     }
 
     const getItem=(id)=>{
-        const item= items.find((it)=>it===it.id)
+        const item = items.find((it)=>it===it.id)
         return item
     }
 
@@ -25,15 +26,23 @@ export default function Store({children}){
         const indexItem = items.findIndex((it)=>it.id===item.id)
         const temp=[...items]
         temp[indexItem]={...item}
+        //revisar si falta el setItem()
     }
 
-    return <AppContext.Provider 
-            value={{
-                items,
-                createItem, 
-                getItem,
-                updateItem 
-                }}>
-                    {children}
-            </AppContext.Provider>
+    return (
+      <AppContext.Provider
+        value={{
+          items,
+          createItem,
+          getItem,
+          updateItem,
+        }}
+      >
+        {children}
+      </AppContext.Provider>
+    );
+}
+
+export function useAppContext(){
+    return useContext(AppContext);
 }

@@ -11,9 +11,9 @@ function App() {
           <Store>
           <BrowserRouter>
             <Routes>
-              <Route path='/' element={<Index/>} /> 
-              <Route path='create' element={<Create/>} /> 
-              <Route path='view/:bookId' element={<View/>} /> 
+              <Route path='/' element={<Index />} /> 
+              <Route path='create' element={<Create />} /> 
+              <Route path='view/:bookId' element={<View />} /> 
             </Routes>  
           </BrowserRouter>    
           </Store>
