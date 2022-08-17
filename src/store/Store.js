@@ -11,14 +11,15 @@ export default function Store({children}){
     const [items, setItems] = useState([])
     
     const createItem=(item)=>{  
-        console.log(item)
+        //console.log(item)
         const temp  = [...items];
         temp.push(item);
         setItems(temp);
     }
 
     const getItem=(id)=>{
-        const item = items.find((it)=>it===it.id)
+      console.log('id  ' + id)  
+      const item = items.find((it)=>it.id===id);
         return item
     }
 

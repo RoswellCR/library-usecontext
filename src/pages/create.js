@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useAppContext } from "../store/Store"
-import { Link } from "react-router-dom"
+import Layout from '../components/layout'
+import { useNavigate } from "react-router-dom"
 
 export default function Create(){
     const [title, setTitle] = useState('')
@@ -11,6 +12,7 @@ export default function Create(){
     const [review, setReview] = useState('')
 
     const store = useAppContext();
+    const navigate = useNavigate();
 
     const handleChange=(e)=>{
         const name = e.target.name;
@@ -64,13 +66,12 @@ export default function Create(){
         }
         //TODO: send to create a new book
         store.createItem(newBook);
-        
+        navigate('/')
     }
 
 
     return(
-        <div>
-            <Link to='/'> Home </Link>
+        <Layout>
             <form onSubmit={handleSubmit}>
                 <div>
                     <div>Title</div>
@@ -99,6 +100,7 @@ export default function Create(){
                 </div>
                 <input type='submit' value='Register book'/>
             </form>
-        </div>
+          </Layout>  
+    
     )
 }

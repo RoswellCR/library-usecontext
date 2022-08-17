@@ -1,14 +1,14 @@
 import { useAppContext } from "../store/Store"
-import { Link } from "react-router-dom"
+import Layout from "../components/layout";
+import Book from "../components/book";
 
 export default function Index(){
     const store = useAppContext();
 
     return (
-    <div>
-        <Link to='/create'> Create </Link>
+    <Layout>
         {store.items.map((item) =>
-            <div key={item.id}> {item.title} </div>
+            <Book key={item.id} item={item}/>
         )}
-    </div>)
+    </Layout>)
 }
