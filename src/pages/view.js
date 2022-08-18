@@ -33,9 +33,3 @@ export default function View(){
         ) 
     
 }
-            // title,
-            // author,
-            // cover,
-            // intro,
-            // completed,
-            // review
