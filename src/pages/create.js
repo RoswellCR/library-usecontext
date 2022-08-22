@@ -3,6 +3,37 @@ import { useAppContext } from "../store/Store"
 import Layout from '../components/layout'
 import { useNavigate } from "react-router-dom"
 
+const inputStyles = {
+    formContainer:{
+        width: "400px",
+        margin:"-50px auto",
+    },
+    container: {
+        display:"flex",
+        flexDirection:"column",
+        gap:"5px",
+        margin: "15px 0",
+    },
+    title:{
+        fontSize: "16px",
+        textAlign: "left",
+    },
+    input:{
+        padding:"10px",
+        borderRadius:"5px",
+        fontSize: "16px",
+    },
+    buttonStyle: {
+        padding: "10px 20px",
+        minWidth:"200px",
+        border: "none",
+        borderRadius:"5px",
+        backgroundColor: "#1e9",
+        fontWeigth: "bolder",
+        fontSize: "18px"
+    }
+}
+
 export default function Create(){
     const [title, setTitle] = useState('')
     const [author, setAuthor] = useState('')
@@ -72,33 +103,33 @@ export default function Create(){
 
     return(
         <Layout>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <div>Title</div>
-                    <input type="text" name="title" onChange={handleChange} value={title}/>
+            <form onSubmit={handleSubmit} style={inputStyles.formContainer}>
+                <div style={inputStyles.container}>
+                    <div style={inputStyles.title}>Title</div>
+                    <input style={inputStyles.input} type="text" name="title" onChange={handleChange} value={title}/>
                 </div>
-                <div>
-                    <div>Author</div>
-                    <input type="text" name="author" onChange={handleChange} value={author}/>
+                <div style={inputStyles.container}>
+                    <div style={inputStyles.title}>Author</div>
+                    <input style={inputStyles.input} type="text" name="author" onChange={handleChange} value={author}/>
                 </div>
-                <div>
-                    <div>Cover</div>
-                    <input type="file" name="cover" onChange={handleChangeFile} />
+                <div style={inputStyles.container}>
+                    <div style={inputStyles.title}>Cover</div>
+                    <input style={inputStyles.input} type="file" name="cover" onChange={handleChangeFile} />
                     <div>{!!cover ? <img src={cover} width='200'alt='cover'/>:''}</div>
                 </div>
-                <div>
-                    <div>Introduction</div>
-                    <input type="text" name="intro" onChange={handleChange} value={intro}/>
+                <div style={inputStyles.container}>
+                    <div style={inputStyles.title}>Introduction</div>
+                    <input style={inputStyles.input} type="text" name="intro" onChange={handleChange} value={intro}/>
                 </div>
-                <div>
-                    <div>Completed</div>
-                    <input type="checkbox" name="completed" onChange={handleChange} value={completed}/>
+                <div style={inputStyles.container}>
+                    <div style={inputStyles.title}>Completed</div>
+                    <input style={inputStyles.input} type="checkbox" name="completed" onChange={handleChange} value={completed}/>
                 </div>
-                <div>
-                    <div>Review</div>
-                    <input type="text" name="review" onChange={handleChange} value={review}/>
+                <div style={inputStyles.container}>
+                    <div style={inputStyles.title}>Review</div>
+                    <input style={inputStyles.input} type="text" name="review" onChange={handleChange} value={review}/>
                 </div>
-                <input type='submit' value='Register book'/>
+                <input style={inputStyles.buttonStyle} type='submit' value='Register book'/>
             </form>
           </Layout>  
     
