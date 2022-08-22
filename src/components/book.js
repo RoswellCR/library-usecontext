@@ -10,6 +10,8 @@ export default function Book({item}){
         display: 'flex',
         flexDirection:'column',
         alignItems:'center',
+        color: "black",
+        textDecoration: "none",
         textAlign:'center',
     }
 
